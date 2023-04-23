@@ -1,0 +1,46 @@
+p:hover {
+    cursor: pointer;
+}
+
+.time{
+    text-decoration: none;
+}
+
+.task{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding : 10px;
+}
+
+body{
+    background-color: #f2f2f2;
+    padding: 10%;
+}
+
+.name{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.task-text{
+    font-size: 20px;
+    margin: 0;
+    display: flex;
+/* center a div */
+    
+}
+
+.timestamp{
+    font-size: 20px;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.deleteButton{
+    margin-left: 20px;
+    width : 40px;
+}
