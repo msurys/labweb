@@ -24,8 +24,7 @@
         <button class="btn btn-info" id="undo-button">Undo</button>
     </div>
     <div id="inputField">
-        <input class="form-inline" type="text" id="search" placeholder="Search for your task here">
-        <button class="btn btn-info" id="search-button" onclick=search()>Search</button>
+        <input class="form-inline" oninput=search() type="text" id="search" placeholder="Search for your task here">
         <div class="custom-control custom-switch custom-switch-lg">
             <input type="checkbox" class="custom-control-input" onchange=state() id="customSwitch6" checked>
             <label class="custom-control-label" for="customSwitch6" >Case insensitive</label>
