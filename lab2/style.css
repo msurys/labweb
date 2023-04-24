@@ -35,13 +35,57 @@ p:hover {
     align-items: center;
 }
 
+#search{
+    width: 75% !important;
+}
+
+
+
+.custom-control-input:checked + .custom-control-label::before {
+    background-color:  orange !important;
+  } 
+  
+  .custom-switch.custom-switch-lg .custom-control-label {
+    padding-left: 30px;
+    height: 100% !important;
+    width: 200px !important;
+    margin-bottom: 20px !important;
+}
+.custom-control-label{
+    display: flex !important;
+    align-items: center !important;
+    margin-top: 0.25rem;
+}
+.custom-switch.custom-switch-lg{
+    height: 100% !important;
+}
+
+.custom-switch.custom-switch-lg .custom-control-label::before {
+    height: 2rem;
+    width: calc(3rem + 0.75rem);
+    border-radius: 4rem;
+    
+}
+
+.custom-switch.custom-switch-lg .custom-control-label::after {
+    width: calc(2rem - 4px);
+    height: calc(2rem - 4px);
+    border-radius: calc(3rem - (2rem / 2));
+}
+
+.custom-switch.custom-switch-lg .custom-control-input:checked ~ .custom-control-label::after {
+    transform: translateX(calc(2rem - 0.25rem));
+}
+
+
 #inputField{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     margin: 0 auto;
     height: 40px;
+    width: 100% ;
     margin-bottom: 30px;
 }
 

@@ -53,6 +53,56 @@ const taskDone = (event) => {
     }
 };
 
+const search = () => {
+    const caseInsensitiveSwitch = document.getElementById("customSwitch6");
+    const input = document.getElementById("search").value;
+    const paragraphs = document.getElementsByTagName("p");
+    if(caseInsensitiveSwitch.checked) {
+    const search = input.toLowerCase();
+    for (let i = 0; i < paragraphs.length; i++) {
+        const text = paragraphs[i].innerHTML.toLowerCase();
+        if (text.includes(search)) {
+            blinkElement(paragraphs[i], 3000);
+        } else {
+            paragraphs[i].style.color = "orange";
+        }
+    }
+    } else {
+        for (let i = 0; i < paragraphs.length; i++) {
+            const text = paragraphs[i].innerHTML;
+            if (text.includes(input)) {
+                blinkElement(paragraphs[i], 3000);
+            } else {
+                paragraphs[i].style.color = "orange";
+            }
+        }
+    }
+};
+
+const state = () => {
+    const caseInsensitiveSwitch = document.getElementById("customSwitch6");
+    const labelForSwitch = document.querySelector(`label[for=${caseInsensitiveSwitch.id}]`);
+    if (caseInsensitiveSwitch.checked) {
+      labelForSwitch.textContent = "Case Insensitive";
+    } else {
+      labelForSwitch.textContent = "Case Sensitive";
+    }
+  };
+  
+
+const blinkElement = (element) => {
+    let count = 0;
+    const intervalId = setInterval(function() {
+      if (count >= 10) {
+        clearInterval(intervalId);
+      } else {
+        element.style.color = (count % 2 === 0) ? 'red' : '';
+        count++;
+      }
+    }, 300);
+  };
+    
+
 const hideList = (listID) => {
     const list = document.getElementById(listID);
     if (list.style.display === "none") {
@@ -66,9 +116,10 @@ const hideList = (listID) => {
 
 $(document).on('click', '#undo-button', function() {
     if (removedTasks) {
-      $("#"+removedTasksList).append(removedTasks);
-      removedTasks = null;
-      removedTasksList = null;
+        $("#"+removedTasksList).append(removedTasks);
+        removedTasks = null;
+        removedTasksList = null;
+        
     }
   });
 
@@ -89,7 +140,9 @@ $('#spinner').on('mouseover', function() {
     var size = 50; 
     const timer = setInterval(
         function() {
-        duration -= 5; 
+            if(duration > 5){
+        duration -= 5;
+            }
         size += 0.5;
         $('#spinner').css('animation-duration', duration + 'ms');
         $('#spinner').css('font-size', size + 'px');
