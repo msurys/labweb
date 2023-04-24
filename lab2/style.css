@@ -9,14 +9,106 @@ p:hover {
 .task{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding-top : 10px;
+    padding-bottom: 10px;
+}
+
+#task-list{
+    width: 100%;
+}
+
+#work-list{
+    width: 100%;
+}
+
+#urgent-list{
+    width: 100%;
+}
+
+.name{
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding : 10px;
+}
+
+#inputField{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+#inputField input{
+    height: 100%;
+    width: 55%;
+    border-radius: 5px !important;
+    box-shadow: none;
+}
+
+.btn-info{
+    margin: 5px;
+    height: 100%;
+    width: 10%;
+    background-color: orange !important;
+    border-color: orange !important;
+}
+
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+    color: #ffffff !important;
+    background-color: #1F2838 !important;
+    border-color: #494F57 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+
+#ControlSelect{
+    width : 20%;
+    height: 100%;
+    margin: 10px;
+}
+
+.task-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.group-text{
+    width: 100%;
+    text-align: center;
+    background-color: rgb(34, 34, 34);
+    height: 40px;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding-top: 5 px;
+}
+
+.box{
+    width: 30vw;
+    border: 1px solid rgb(255, 196, 0);
+    border-radius: 5px;
+    margin-inline: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 body{
-    background-color: #f2f2f2;
     padding: 10%;
+    background-color: rgb(59, 59, 59) !important;
+    color: rgb(255, 166, 0) !important;
 }
 
 .name{
@@ -24,14 +116,14 @@ body{
     font-weight: bold;
     margin: 0;
     padding-bottom: 20px;
+    height: 100px;
 }
 
 .task-text{
     font-size: 20px;
     margin: 0;
     display: flex;
-/* center a div */
-    
+    justify-content: center;
 }
 
 .timestamp{
@@ -43,4 +135,23 @@ body{
 .deleteButton{
     margin-left: 20px;
     width : 40px;
+}
+
+#spinner{
+    font-size: 50px;
+}
+
+
+#spinner:hover{
+    cursor: default;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transition: animation-duration 0.5s ease-out;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }

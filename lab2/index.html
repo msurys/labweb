@@ -11,19 +11,35 @@
 </head>
 <body>
     <div class="name">
-        <h3>ToDo list</h3>
+        <h3 id="spinner">ToDo list</h3>
     </div>
     <div id="inputField">
         <input class="form-inline" type="text" id="input" placeholder="Enter your task here">
+        <select class="form-control" id="ControlSelect">
+            <option>Tasks</option>
+            <option>Work</option>
+            <option>Urgent</option>
+          </select>
         <button class="btn btn-info" id="addBtn" onclick = addToList()>Add</button>
-        <button class="btn btn-info" id="undo-button" onclick = undo()>Undo</button>
+        <button class="btn btn-info" id="undo-button">Undo</button>
     </div>
-    <div>
-        <h3>Tasks</h3>
+    <div class="task-box">
+    <div class="box">
+        <h3 class="group-text" onclick = "hideList('task-list')">Tasks</h3>
         <div id="task-list" onclick=taskDone()>
         </div>
     </div>
-    <div id="trash"></div>
+    <div class="box">
+        <h3 class="group-text" onclick = "hideList('work-list')">Work</h3>
+        <div id="work-list">
+        </div>
+    </div>
+    <div class="box">
+        <h3 class="group-text" onclick = "hideList('urgent-list')">Urgent</h3>
+        <div id="urgent-list">
+    </div>
+    </div>
+    
 </body>
 <script type="text/javascript" src="./script.js"></script>
 </html>

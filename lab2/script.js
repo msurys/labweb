@@ -1,10 +1,11 @@
-"use strict";
+'use strict';
 
-// function that adds a new p element as text from input field
-//prevent empty input
 
 const taskList = document.getElementById("task-list");
-const removedTasks = [1];
+const workList = document.getElementById("work-list");
+const urgentList = document.getElementById("urgent-list");
+var removedTasks;
+var removedTasksList;
 
 const addToList = () => {
     const input = document.getElementById("input").value;
@@ -19,24 +20,25 @@ const addToList = () => {
     newTask.appendChild(p);
 
     button.innerHTML = "X";
-    button.setAttribute("class", "deleteButton");
     button.setAttribute("class", "btn btn-danger deleteButton");
-    button.addEventListener("click", deleteTask);
     newTask.appendChild(button);
     
     if (input === "") {
         alert("Please enter a task");
         return;
     }
-    taskList.appendChild(newTask);
+    if(document.getElementById("ControlSelect").value === "Tasks") {
+    taskList.appendChild(newTask);}
+    else if(document.getElementById("ControlSelect").value === "Work") {
+        workList.appendChild(newTask);}
+    else if(document.getElementById("ControlSelect").value === "Urgent") {
+        urgentList.appendChild(newTask);}
 };
 
-//i want this to gray out a p inside div and add a time stamp
 const taskDone = (event) => {
     if (event.target.style.textDecoration === "line-through") {
         event.target.style.textDecoration = "none";
-        event.target.style.color = "black";
-        // remove timestamp
+        event.target.style.color = "orange";
         const timeStamp = event.target.nextElementSibling;
         if (timeStamp.classList.contains('timestamp')) {
             timeStamp.remove();
@@ -44,7 +46,6 @@ const taskDone = (event) => {
     } else {
         event.target.style.textDecoration = "line-through";
         event.target.style.color = "gray";
-        // create timestamp
         const timeStamp = document.createElement('div');
         timeStamp.classList.add('timestamp');
         timeStamp.textContent = new Date().toLocaleTimeString();
@@ -52,19 +53,53 @@ const taskDone = (event) => {
     }
 };
 
-const deleteTask = (event) => {
-    const removedTask = $(event.target).parent().clone();
-    removedTasks.push(removedTask);
-    $(event.target).parent().remove();
-  };
-  
-const undo = () => {
-    const lastRemovedTask = removedTasks.pop();
-    lastRemovedTask.find(".deleteButton").click(deleteTask);
-    lastRemovedTask.find(".task-text").click(taskDone);
-    if (lastRemovedTask) {
-      $("#task-list").append(lastRemovedTask);
+const hideList = (listID) => {
+    const list = document.getElementById(listID);
+    if (list.style.display === "none") {
+        list.style.display = "block";
+    } else {
+        list.style.display = "none";
     }
-  };
+};
 
+
+
+$(document).on('click', '#undo-button', function() {
+    if (removedTasks) {
+      $("#"+removedTasksList).append(removedTasks);
+      removedTasks = null;
+      removedTasksList = null;
+    }
+  });
+
+
+$(document).on('click', '.deleteButton', function() {
+    const confirmed = confirm("Are you sure you want to delete this task?");
+    if (confirmed) {
+    const removedTask = $(this).parent().clone();
+    const list = $(this).parent().parent().attr('id');
+    removedTasks = removedTask;
+    removedTasksList = list;
+    $(this).parent().remove();
+    }
+    });
+
+$('#spinner').on('mouseover', function() {
+    var duration = 1000; 
+    var size = 50; 
+    const timer = setInterval(
+        function() {
+        duration -= 5; 
+        size += 0.5;
+        $('#spinner').css('animation-duration', duration + 'ms');
+        $('#spinner').css('font-size', size + 'px');
+        $('#spinner').css('color', size + 'px');
+    }, 50);
+    $(this).data('timer', timer);
+    }).on('mouseout', function() {
+    const timer = $(this).data('timer');
+    clearInterval(timer); 
+    $(this).css('animation-duration', '1000ms');
+    $(this).css('font-size', '50px'); 
+});
 
