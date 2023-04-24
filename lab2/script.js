@@ -119,7 +119,9 @@ $(document).on('click', '#undo-button', function() {
         $("#"+removedTasksList).append(removedTasks);
         removedTasks = null;
         removedTasksList = null;
-        
+        $('.task').each(function() {
+            $(this).find(':first-child').on('click', taskDone);
+          });
     }
   });
 
