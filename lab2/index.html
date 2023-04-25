@@ -31,21 +31,28 @@
           </div>
     </div>
     <div class="task-box">
-    <div class="box">
-        <h3 class="group-text" onclick = "hideList('task-list')">Tasks</h3>
-        <div id="task-list" onclick=taskDone()>
+        <div class="box">
+            <h3 class="group-text" onclick = "hideList('task-list')">Tasks</h3>
+            <div id="task-list" onclick=taskDone()>
+            </div>
+        </div>
+        <div class="box">
+            <h3 class="group-text" onclick = "hideList('work-list')">Work</h3>
+            <div id="work-list">
+            </div>
+        </div>
+        <div class="box">
+            <h3 class="group-text" onclick = "hideList('urgent-list')">Urgent</h3>
+            <div id="urgent-list">
+            </div>
         </div>
     </div>
-    <div class="box">
-        <h3 class="group-text" onclick = "hideList('work-list')">Work</h3>
-        <div id="work-list">
+    <div class="notification" id="delete-notification">
+        <h3>Do you want to delete this task?</h3>
+        <div class="box-notification">
+            <button class="btn btn-info noti" id="confirm">Confirm</button>
+            <button class="btn btn-info noti" id="cancel">Cancel</button>
         </div>
-    </div>
-    <div class="box">
-        <h3 class="group-text" onclick = "hideList('urgent-list')">Urgent</h3>
-        <div id="urgent-list">
-    </div>
-    </div>
     </div>
 
     

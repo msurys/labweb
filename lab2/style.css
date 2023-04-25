@@ -32,6 +32,34 @@ p:hover {
     color: black;
 }
 
+.notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5 !important;
+    background-color: #1f283885;
+    visibility: hidden;
+    }
+
+.box-notification{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.noti{
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+
+
 
 .name{
     display: flex;
@@ -166,6 +194,8 @@ body{
     padding: 10%;
     background-color: rgb(59, 59, 59) !important;
     color: rgb(255, 166, 0) !important;
+    position: relative !important;
+    z-index: 0 !important;
 }
 
 .name{

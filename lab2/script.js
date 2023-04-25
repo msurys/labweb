@@ -118,16 +118,20 @@ $(document).on('click', '#undo-button', function() {
   });
 
 
-$(document).on('click', '.deleteButton', function() {
-    const confirmed = confirm("Are you sure you want to delete this task?");
-    if (confirmed) {
-    const removedTask = $(this).parent().clone();
-    const list = $(this).parent().parent().attr('id');
-    removedTasks = removedTask;
-    removedTasksList = list;
-    $(this).parent().remove();
-    }
+  $(document).on('click', '.deleteButton', function() {
+    const currentTask = $(this).parent();
+    const currentList = $(this).parent().parent().attr('id');
+    $('#delete-notification').css('visibility', 'visible');
+    $('#confirm').on('click', function() {
+        removedTasks = currentTask.clone();
+        removedTasksList = currentList;
+        currentTask.remove();
+        $('#delete-notification').css('visibility', 'hidden');
     });
+    $('#cancel').on('click', function() {
+        $('#delete-notification').css('visibility', 'hidden');
+    });
+});    
 
 $('#spinner').on('mouseover', function() {
     var duration = 1000; 
