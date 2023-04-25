@@ -64,7 +64,7 @@ const state = () => {
     }
   };
   
-  const search = () => {
+const search = () => {
     const caseInsensitiveSwitch = document.getElementById("customSwitch6");
     const input = document.getElementById("search").value;
     const paragraphs = document.getElementsByTagName("p");
@@ -90,9 +90,7 @@ const state = () => {
                 }
             }
         }
-    };
-    
-
+};
     
 
 const hideList = (listID) => {
@@ -118,7 +116,7 @@ $(document).on('click', '#undo-button', function() {
   });
 
 
-  $(document).on('click', '.deleteButton', function() {
+$(document).on('click', '.deleteButton', function() {
     const currentTask = $(this).parent();
     const currentList = $(this).parent().parent().attr('id');
     $('#delete-notification').css('visibility', 'visible');
