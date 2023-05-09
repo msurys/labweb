@@ -1,10 +1,16 @@
 import { useState } from 'react';
+import { useLocation } from "react-router";
+import { Modal, Button } from 'react-bootstrap';
 import '../styles/Details.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Details = ({ property }) => {
+const Details = () => {
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
-  const [showModal, setShowModal] = useState(false);
+  const [showModalGood, setShowModalGood] = useState(false);
+  const [showModalBad, setShowModalBad] = useState(false);
+  const location = useLocation();
+  const property = location.state;
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -18,29 +24,9 @@ const Details = ({ property }) => {
     event.preventDefault();
     const success = Math.random() < 0.5;
     if (success) {
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Niepowodzenie!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Spróbuj ponownie później!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Zamknij
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        setShowModalBad(true);
     } else {
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Gratulacje!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Wszystko zostało wykonane poprawnie!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Zamknij
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        setShowModalGood(true);
     }
   };
 
@@ -55,19 +41,41 @@ const Details = ({ property }) => {
         <p><span>Telefon:</span> {property.phone}</p>
         <p><span>Email:</span> {property.email}</p>
 
-      <h3>Kontakt z ogłoszeniodawcą</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Twój adres e-mail:</label>
           <input type="email" id="email" value={email} onChange={handleEmailChange} required />
         </div>
         <div className="form-group">
-          <label htmlFor="message">Twoja wiadomość:</label>
+          <label htmlFor="message">Twoja wiadomość do sprzedawcy:</label>
           <textarea id="message" value={message} onChange={handleMessageChange} required />
         </div>
         <button type="submit">Wyślij</button>
       </form>
+      <Modal show={showModalBad} onHide={() => setShowModalBad(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Niepowodzenie!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Spróbuj ponownie później!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModalBad(false)}>
+            Zamknij
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showModalGood} onHide={() => setShowModalGood(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Gratulacje!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Wszystko zostało wykonane poprawnie!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModalGood(false)}>
+            Zamknij
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
+    
   );
 };
 

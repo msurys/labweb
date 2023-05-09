@@ -5,6 +5,7 @@ import AddNew from './components/AddNew';
 import Search from './components/Search';
 
 import './App.css';
+import Details from './components/Details';
 
 function App() {
   const RealEstateListDefault = [
@@ -63,6 +64,39 @@ function App() {
       phone : "123456789",
       email : "jan.kowalski@o2.pl",
     },
+    {
+      id: 6,
+      city: 'Poznań',
+      address: 'ul. Garbary 23',
+      bedrooms: 2,
+      description: 'Mieszkanie z balkonem na ostatnim piętrze',
+      price: 380000,
+      seller : "Karolina Nowak",
+      phone : "345678901",
+      email : "karolina.nowak@wp.pl",
+    },
+    {
+      id: 7,
+      city: 'Szczecin',
+      address: 'ul. Mickiewicza 12',
+      bedrooms: 3,
+      description: 'Mieszkanie w centrum miasta z widokiem na zamek',
+      price: 420000,
+      seller : "Tomasz Kowalczyk",
+      phone : "234567890",
+      email : "tomasz.kowalczyk@gmail.com",
+    },
+    {
+      id: 8,
+      city: 'Łódź',
+      address: 'ul. Piotrkowska 123',
+      bedrooms: 1,
+      description: 'Mieszkanie w nowoczesnym budynku',
+      price: 280000,
+      seller : "Alicja Kaczmarek",
+      phone : "345678912",
+      email : "alicja.kaczmarek@onet",
+    },
   ];
 
   const [RealEstateList, setRealEstateList] = useState(RealEstateListDefault);
@@ -79,6 +113,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Search RealEstateList={RealEstateList}/> }/>
         <Route path="/addNew" element={ addNewJSX }/>
+        <Route path="/details" element={ <Details/> }/>
       </Routes>
       </BrowserRouter>
     </main>

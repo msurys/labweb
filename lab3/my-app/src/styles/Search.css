@@ -40,6 +40,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 
   .search-bar-container div{

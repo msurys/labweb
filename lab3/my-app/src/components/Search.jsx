@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/Search.css';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 const Search = ({ RealEstateList }) => {
   const [selectedFilter, setSelectedFilter] = useState('city');
@@ -17,6 +18,10 @@ const Search = ({ RealEstateList }) => {
       return true;
     }
   });
+
+  const handleBookingClick = (propertyId) => {
+
+  }
 
   const handleSelectChange = (event) => {
     setSelectedFilter(event.target.value);
@@ -71,6 +76,9 @@ const Search = ({ RealEstateList }) => {
             <p><span>Liczba pokoi:</span> {property.bedrooms}</p>
             <p><span>Opis:</span> {property.description}</p>
             <p><span>Cena:</span> {property.price} zł</p>
+            <Link to={"details"} state={property} className='btn btn-info'>
+                Book meeting
+            </Link>
           </li>
         ))}
       </ul>
