@@ -2,6 +2,9 @@ nav {
   background-color: #F8F8F8;
   padding: 10px;
   border-bottom: 1px solid #CCC;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 nav ul {
