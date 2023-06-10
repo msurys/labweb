@@ -42,6 +42,7 @@ const Search = ({ RealEstateList }) => {
   }
 
   return (
+
     <div className="search-container">
       <div className="search-bar-container">
         <div>

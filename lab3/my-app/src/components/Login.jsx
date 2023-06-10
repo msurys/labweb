@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { logInWithGoogle, useUser,logout,logInWithGithub } from "../Firebase/AuthService";
 
 const Login = () => {
   const { login } = useAuth();
@@ -8,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const user = useUser();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -25,6 +27,14 @@ const Login = () => {
     }
   };
 
+  if(user)
+  return(
+    <div className="App">
+        <h2>You are logged in as {user.displayName}</h2>
+        <button onClick={logout}>Log me out</button>
+    </div>
+  )
+
   return (
     <div>
       <h2>Login</h2>
@@ -40,7 +50,10 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <button onClick={logInWithGoogle}>Login with Google</button>
+      <button onClick={logInWithGithub}>Login with Github</button>
     </div>
+    
   );
 };
 
